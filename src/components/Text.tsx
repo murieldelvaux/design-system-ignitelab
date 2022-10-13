@@ -6,9 +6,10 @@ export interface TextProps{
     size?: 'sm'| 'md'| 'lg';
     children: ReactNode;
     asChild?:boolean;
+    className?: string;
 }
 
-export function Text({ size= 'md', children, asChild}: TextProps){ // padronizando size como medium
+export function Text({ size= 'md', children, asChild, className}: TextProps){ // padronizando size como medium
     const Comp = asChild ? Slot: 'span';
     return(
         <Comp className={clsx('text-gray-100 font-sans',
@@ -17,7 +18,8 @@ export function Text({ size= 'md', children, asChild}: TextProps){ // padronizan
             'text-sm': size==='md',
             'text-md': size==='lg',
 
-        }
+        },
+        className,
         )}
         >
             {children}
